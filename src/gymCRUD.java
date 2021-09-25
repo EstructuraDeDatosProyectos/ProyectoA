@@ -2,16 +2,16 @@ import java.util.ArrayList;
 
 public class gymCRUD {
 
-    public boolean verificarCedula(ArrayList<Integer> cedula){
-        boolean resul = false;
-        if (cedula.size() >= 2){
-            for (int i = 0; i < cedula.size()-1; i++){
-                for (int j = i; j < cedula.size(); j++){
-                    if ((cedula.get(i) == cedula.get(j)) && (i != j)){
-                        resul = true;
-                    }
-                }
+    private ArrayList<Integer> cedu = new ArrayList<>();
 
+    public boolean verificarCedula(int cedula){
+        boolean resul = false;
+        cedu.add(cedula);
+        for (int i = 0; i < cedu.size(); i++){
+            for (int j = 0; j < cedu.size(); j++){
+                if ((cedu.get(i)==cedu.get(j)) && (i != j)){
+                    resul = true;
+                }
             }
         }
         return resul;
@@ -23,5 +23,13 @@ public class gymCRUD {
             resul = true;
         }
         return resul;
+    }
+
+    public boolean borrarUsuario(){
+        boolean estadoU = true;
+        for(int i = 0; i < cedu.size(); i++){
+
+        }
+        return estadoU;
     }
 }

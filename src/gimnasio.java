@@ -5,7 +5,6 @@ public class gimnasio {
 
     private static Scanner leer = new Scanner(System.in);
     private static gymCRUD gym = new gymCRUD();
-    private static ArrayList<Integer> cedu = new ArrayList<>();
 
     public static void main(String[] args) {
         int fila = 0;
@@ -27,10 +26,8 @@ public class gimnasio {
                     int cedula = leer.nextInt();
                     if((cedula <= 99999999) || (cedula >= 1)){
                         //Agrega la cedula a un ArrayLists para verificarla
-                        cedu.add(cedula);
-                        System.out.println(cedu.toString());
-                        if (gym.verificarCedula(cedu)){
-                            System.out.println(gym.verificarCedula(cedu));
+                        if (gym.verificarCedula(cedula)){
+                            System.out.println(gym.verificarCedula(cedula));
                             System.out.println("La cedula ingresada ya esta registrada");
                             c = false;
                         }else{
@@ -42,12 +39,12 @@ public class gimnasio {
                             if(gym.verificarNombre(nombre)){
                                 System.out.println("El nombre no cumple con los parametros");
                             }
-                            System.out.println("Nombre length " + nombre.length());
                             while(a){
-                                System.out.println("repetido");
                                 if(fila < matriz.length){
                                     if (matriz[fila][columna] == null){
-                                        matriz[fila][columna] = nombre;
+                                        String datosU = nombre + " " + cedula;
+                                        String datosUN = datosU.substring(0, datosU.indexOf(" "));
+                                        matriz[fila][columna] = datosUN;
                                         fila += 1;
                                         a = false;
                                     }else{
@@ -60,13 +57,15 @@ public class gimnasio {
                             for (int i = 0; i < matriz.length; i++){
                                 //toma el numero de columnas de cada fila de la matriz
                                 for (int j = 0; j < matriz[i].length; j++){
-                                    int fil = i + 1;
                                     System.out.println(matriz[i][j]);
                                 }
                             }
                         }
                     }
                     break;
+                case 2:
+                    int cedulaB = leer.nextInt();
+
             }
         }
     }
