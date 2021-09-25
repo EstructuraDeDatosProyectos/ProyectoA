@@ -9,12 +9,20 @@ public class gimnasio {
     public static void main(String[] args) {
         int fila = 0;
         int columna = 0;
+        int cedula = 0;
         System.out.println("cubiculo:");
         int cubiculo = leer.nextInt();
         System.out.println("casillero");
         int casillero = leer.nextInt();
         String matriz[][] = new String[cubiculo][casillero];
-        System.out.println(matriz.length);
+        String matriz2[][] = new String[cubiculo][casillero];
+        for (int i = 0; i < matriz.length; i++){
+            for (int j = 0; j < matriz[i].length; j++){
+                matriz[i][j] = (i+1) + "," + (j+1);
+                matriz2[i][j] = (i+1) + "," + (j+1);
+            }
+        }
+
         boolean c = true;
         while (c){
             System.out.println("Opcion");
@@ -23,13 +31,12 @@ public class gimnasio {
                 case 1:
                     boolean a = true;
                     System.out.println("cedula");
-                    int cedula = leer.nextInt();
+                    cedula = leer.nextInt();
                     if((cedula <= 99999999) || (cedula >= 1)){
                         //Agrega la cedula a un ArrayLists para verificarla
                         if (gym.verificarCedula(cedula)){
-                            System.out.println(gym.verificarCedula(cedula));
                             System.out.println("La cedula ingresada ya esta registrada");
-                            c = false;
+                            System.exit(0);
                         }else{
                             System.out.println("nombre completo");
                             leer.nextLine();
@@ -38,26 +45,26 @@ public class gimnasio {
                             String apellido = nombreC.substring(nombreC.indexOf(" ") + 1, nombreC.length());
                             if(gym.verificarNombre(nombre)){
                                 System.out.println("El nombre no cumple con los parametros");
+                                System.exit(0);
                             }
                             while(a){
                                 if(fila < matriz.length){
-                                    if (matriz[fila][columna] == null){
+                                    if (!(matriz[fila][columna] == null)){
                                         String datosU = nombre + " " + cedula;
-                                        String datosUN = datosU.substring(0, datosU.indexOf(" "));
-                                        matriz[fila][columna] = datosUN;
+                                        matriz[fila][columna] = datosU.substring(0, datosU.indexOf(" "));
+                                        matriz2[fila][columna] = datosU;
                                         fila += 1;
                                         a = false;
-                                    }else{
-                                        columna += 1;
                                     }
                                 }else {
                                     fila = 0;
+                                    columna += 1;
                                 }
                             }
                             for (int i = 0; i < matriz.length; i++){
                                 //toma el numero de columnas de cada fila de la matriz
                                 for (int j = 0; j < matriz[i].length; j++){
-                                    System.out.println(matriz[i][j]);
+                                    System.out.println(matriz2[i][j]);
                                 }
                             }
                         }
@@ -65,7 +72,8 @@ public class gimnasio {
                     break;
                 case 2:
                     int cedulaB = leer.nextInt();
-
+                    System.out.println(gym.borrarUsuario(matriz,matriz2,cedulaB));
+                    break;
             }
         }
     }

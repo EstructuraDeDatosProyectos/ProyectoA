@@ -7,6 +7,7 @@ public class gymCRUD {
     public boolean verificarCedula(int cedula){
         boolean resul = false;
         cedu.add(cedula);
+        System.out.println("gymCRUD " + cedu.toString());
         for (int i = 0; i < cedu.size(); i++){
             for (int j = 0; j < cedu.size(); j++){
                 if ((cedu.get(i)==cedu.get(j)) && (i != j)){
@@ -25,10 +26,17 @@ public class gymCRUD {
         return resul;
     }
 
-    public boolean borrarUsuario(){
+    public boolean borrarUsuario(String matriz[][], String matriz2[][], int cedula){
         boolean estadoU = true;
-        for(int i = 0; i < cedu.size(); i++){
-
+        for(int i = 0; i < matriz.length; i++){
+            for (int j = 0; j < matriz[i].length; j++){
+                if (cedu.get(i) == cedula){
+                    String cedulaE = String.valueOf(cedu.get(i));
+                    if (cedulaE.equals(matriz2[i][j].substring(matriz2[i][j].indexOf(" ") + 1, matriz2[i][j].length())) ){
+                        estadoU = false;
+                    }
+                }
+            }
         }
         return estadoU;
     }
