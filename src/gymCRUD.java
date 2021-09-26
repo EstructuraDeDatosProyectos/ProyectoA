@@ -28,13 +28,18 @@ public class gymCRUD {
 
     public boolean borrarUsuario(String matriz[][], String matriz2[][], int cedula){
         boolean estadoU = true;
+        for (int i = 0; i < cedu.size(); i++){
+            if (cedu.get(i) ==  cedula) {
+                cedu.remove(i);
+            }
+        }
+
         for(int i = 0; i < matriz.length; i++){
-            for (int j = 0; j < matriz[i].length; j++){
-                if (cedu.get(i) == cedula){
-                    String cedulaE = String.valueOf(cedu.get(i));
-                    if (cedulaE.equals(matriz2[i][j].substring(matriz2[i][j].indexOf(" ") + 1, matriz2[i][j].length())) ){
-                        estadoU = false;
-                    }
+            for (int j = 0; j < matriz2[i].length; j++){
+                String matrizS = matriz2[i][j].substring(matriz2[i][j].indexOf(" ") + 1, matriz2[i][j].length());
+                int matrizI = Integer.parseInt(matrizS);
+                if (matrizI == cedula){
+                    estadoU = false;
                 }
             }
         }

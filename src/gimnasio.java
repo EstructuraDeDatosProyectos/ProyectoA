@@ -43,6 +43,7 @@ public class gimnasio {
                             String nombreC = leer.nextLine();
                             String nombre = nombreC.substring(0, nombreC.indexOf(" "));
                             String apellido = nombreC.substring(nombreC.indexOf(" ") + 1, nombreC.length());
+                            System.out.println(apellido);
                             if(gym.verificarNombre(nombre)){
                                 System.out.println("El nombre no cumple con los parametros");
                                 System.exit(0);
