@@ -10,9 +10,7 @@ public class gimnasio {
         int fila = 0;
         int columna = 0;
         int cedula = 0;
-        System.out.println("cubiculo:");
         int cubiculo = leer.nextInt();
-        System.out.println("casillero");
         int casillero = leer.nextInt();
         String matriz[][] = new String[cubiculo][casillero];
         String matriz2[][] = new String[cubiculo][casillero];
@@ -25,14 +23,12 @@ public class gimnasio {
 
         boolean c = true;
         while (c){
-            System.out.println("Opcion");
             int option = leer.nextInt();
             switch (option){
                 case 1:
                     fila = 0;
                     columna = 0;
                     boolean a = true;
-                    System.out.println("cedula");
                     cedula = leer.nextInt();
                     if((cedula <= 99999999) || (cedula >= 1)){
                         //Agrega la cedula a un ArrayLists para verificarla
@@ -40,12 +36,10 @@ public class gimnasio {
                             System.out.println("La cedula ingresada ya esta registrada");
                             System.exit(0);
                         }else{
-                            System.out.println("nombre completo");
                             leer.nextLine();
                             String nombreC = leer.nextLine();
                             String nombre = nombreC.substring(0, nombreC.indexOf(" "));
                             String apellido = nombreC.substring(nombreC.indexOf(" ") + 1, nombreC.length());
-                            System.out.println(apellido);
                             if(gym.verificarNombre(nombre)){
                                 System.out.println("El nombre no cumple con los parametros");
                                 System.exit(0);
@@ -68,7 +62,7 @@ public class gimnasio {
                             for (int i = 0; i < matriz.length; i++){
                                 //toma el numero de columnas de cada fila de la matriz
                                 for (int j = 0; j < matriz[i].length; j++){
-                                    System.out.println(matriz[i][j]);
+                                    System.out.println(matriz[i][j] + "\n");
                                 }
                             }
                         }
@@ -76,7 +70,23 @@ public class gimnasio {
                     break;
                 case 2:
                     int cedulaB = leer.nextInt();
-                    gym.borrarUsuario(matriz,matriz2,cedulaB);
+                    if (!gym.borrarUsuario(matriz,matriz2,cedulaB)){
+
+                    }else{
+                        System.out.println("Usuario no encontrado, no se realizo la eliminacion");
+                    }
+                    break;
+                case 3:
+                    int cedulaE = leer.nextInt();
+                    if (gym.buscarUsuario(matriz2, matriz, cedulaE)){
+                    }else{
+                        System.out.println("Usuario no encontrado");
+                    }
+                    break;
+                case 4:
+                    c = false;
+                    break;
+                default:
                     break;
             }
         }

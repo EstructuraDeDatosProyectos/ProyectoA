@@ -7,7 +7,6 @@ public class gymCRUD {
     public boolean verificarCedula(int cedula){
         boolean resul = false;
         cedu.add(cedula);
-        System.out.println("gymCRUD " + cedu.toString());
         for (int i = 0; i < cedu.size(); i++){
             for (int j = 0; j < cedu.size(); j++){
                 if ((cedu.get(i)==cedu.get(j)) && (i != j)){
@@ -33,7 +32,6 @@ public class gymCRUD {
                 cedu.remove(i);
             }
         }
-        System.out.println("cedula " + cedu.toString());
         String matrizS = "";
         String matrizNombre = "";
         String cedulaS = "";
@@ -50,12 +48,31 @@ public class gymCRUD {
                 }
             }
         }
-        System.out.println(matrizNombre);
+        System.out.println(matrizNombre + "\n");
         for (int k = 0; k < matriz.length; k++){
             for (int l = 0; l < matriz[k].length; l++){
-                System.out.println(matriz[k][l]);
+                System.out.println(matriz[k][l] + "\n");
             }
         }
         return estadoU;
+    }
+
+    public boolean buscarUsuario(String matriz[][], String matriz2[][], int cedula){
+        boolean encontrado = false;
+        String usuarioEncontrado = "";
+        String cedulaS = "";
+        String matrizS = "";
+        for (int i = 0; i < matriz.length; i++){
+            for (int j = 0; j < matriz[i].length; j++){
+                matrizS = matriz[i][j].substring(0, matriz[i][j].indexOf(" "));
+                cedulaS = String.valueOf(cedula);
+                if (matrizS.equals(cedulaS)){
+                    usuarioEncontrado = matriz2[i][j] + " esta ubicado en cubiculo " + (i+1) + " y casillero " + (j+1);
+                    encontrado = true;
+                }
+            }
+        }
+        System.out.println(usuarioEncontrado);
+        return encontrado;
     }
 }
