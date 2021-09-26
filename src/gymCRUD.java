@@ -41,17 +41,17 @@ public class gymCRUD {
                 matrizS = matriz2[i][j].substring(0, matriz2[i][j].indexOf(" "));
                 cedulaS = String.valueOf(cedula);
                 if (matrizS.equals(cedulaS)){
-                    matrizNombre = "Se elimino a " + matriz[i][j] + " de cubiculo " + (i+1) + " y casillero " + (j+1);
+                    matrizNombre = "Se elimino " + matriz[i][j] + " de cubiculo " + (i+1) + " y casillero " + (j+1);
                     matriz[i][j] = (i+1) + "," + (j+1);
                     matriz2[i][j] = (i+1) + ", " + (j+1);
                     estadoU = false;
                 }
             }
         }
-        System.out.println(matrizNombre + "\n");
+        System.out.println(matrizNombre);
         for (int k = 0; k < matriz.length; k++){
             for (int l = 0; l < matriz[k].length; l++){
-                System.out.println(matriz[k][l] + "\n");
+                System.out.println(matriz[k][l]);
             }
         }
         return estadoU;

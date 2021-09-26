@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Autores Osacr Florez, Antonio Cleves y Yilber Rojas
+ * Hernan Lozano
+ * Universidad El Bosque
+ * Estructura de Datos
+ */
 public class gimnasio {
 
     private static Scanner leer = new Scanner(System.in);
@@ -62,26 +68,21 @@ public class gimnasio {
                             for (int i = 0; i < matriz.length; i++){
                                 //toma el numero de columnas de cada fila de la matriz
                                 for (int j = 0; j < matriz[i].length; j++){
-                                    System.out.println(matriz[i][j] + "\n");
+                                    System.out.println(matriz[i][j]);
                                 }
                             }
                         }
                     }
+                    System.out.println("");
                     break;
                 case 2:
                     int cedulaB = leer.nextInt();
-                    if (!gym.borrarUsuario(matriz,matriz2,cedulaB)){
-
-                    }else{
-                        System.out.println("Usuario no encontrado, no se realizo la eliminacion");
-                    }
+                    gym.borrarUsuario(matriz,matriz2,cedulaB);
+                    System.out.println("");
                     break;
                 case 3:
                     int cedulaE = leer.nextInt();
-                    if (gym.buscarUsuario(matriz2, matriz, cedulaE)){
-                    }else{
-                        System.out.println("Usuario no encontrado");
-                    }
+                    gym.buscarUsuario(matriz2, matriz, cedulaE);
                     break;
                 case 4:
                     c = false;
