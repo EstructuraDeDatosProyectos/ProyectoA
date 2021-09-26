@@ -19,7 +19,7 @@ public class gimnasio {
         for (int i = 0; i < matriz.length; i++){
             for (int j = 0; j < matriz[i].length; j++){
                 matriz[i][j] = (i+1) + "," + (j+1);
-                matriz2[i][j] = (i+1) + "," + (j+1);
+                matriz2[i][j] = (i+1) + ", " + (j+1);
             }
         }
 
@@ -29,6 +29,8 @@ public class gimnasio {
             int option = leer.nextInt();
             switch (option){
                 case 1:
+                    fila = 0;
+                    columna = 0;
                     boolean a = true;
                     System.out.println("cedula");
                     cedula = leer.nextInt();
@@ -50,12 +52,13 @@ public class gimnasio {
                             }
                             while(a){
                                 if(fila < matriz.length){
-                                    if (!(matriz[fila][columna] == null)){
-                                        String datosU = nombre + " " + cedula;
-                                        matriz[fila][columna] = datosU.substring(0, datosU.indexOf(" "));
+                                    if (matriz[fila][columna].length() <= 3){
+                                        String datosU = cedula + " " + nombre;
+                                        matriz[fila][columna] = nombre;
                                         matriz2[fila][columna] = datosU;
-                                        fila += 1;
                                         a = false;
+                                    }else{
+                                        fila += 1;
                                     }
                                 }else {
                                     fila = 0;
@@ -65,7 +68,7 @@ public class gimnasio {
                             for (int i = 0; i < matriz.length; i++){
                                 //toma el numero de columnas de cada fila de la matriz
                                 for (int j = 0; j < matriz[i].length; j++){
-                                    System.out.println(matriz2[i][j]);
+                                    System.out.println(matriz[i][j]);
                                 }
                             }
                         }
@@ -73,7 +76,7 @@ public class gimnasio {
                     break;
                 case 2:
                     int cedulaB = leer.nextInt();
-                    System.out.println(gym.borrarUsuario(matriz,matriz2,cedulaB));
+                    gym.borrarUsuario(matriz,matriz2,cedulaB);
                     break;
             }
         }

@@ -33,14 +33,27 @@ public class gymCRUD {
                 cedu.remove(i);
             }
         }
-
-        for(int i = 0; i < matriz.length; i++){
-            for (int j = 0; j < matriz2[i].length; j++){
-                String matrizS = matriz2[i][j].substring(matriz2[i][j].indexOf(" ") + 1, matriz2[i][j].length());
-                int matrizI = Integer.parseInt(matrizS);
-                if (matrizI == cedula){
+        System.out.println("cedula " + cedu.toString());
+        String matrizS = "";
+        String matrizNombre = "";
+        String cedulaS = "";
+        int i,j = 0;
+        for(i = 0; i < matriz2.length; i++){
+            for (j = 0; j < matriz2[i].length; j++){
+                matrizS = matriz2[i][j].substring(0, matriz2[i][j].indexOf(" "));
+                cedulaS = String.valueOf(cedula);
+                if (matrizS.equals(cedulaS)){
+                    matrizNombre = "Se elimino a " + matriz[i][j] + " de cubiculo " + (i+1) + " y casillero " + (j+1);
+                    matriz[i][j] = (i+1) + "," + (j+1);
+                    matriz2[i][j] = (i+1) + ", " + (j+1);
                     estadoU = false;
                 }
+            }
+        }
+        System.out.println(matrizNombre);
+        for (int k = 0; k < matriz.length; k++){
+            for (int l = 0; l < matriz[k].length; l++){
+                System.out.println(matriz[k][l]);
             }
         }
         return estadoU;
